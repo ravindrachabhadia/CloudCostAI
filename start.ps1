@@ -20,7 +20,7 @@ $currentDir = Get-Location
 
 # Start backend in background
 Write-Host "🔧 Starting FastAPI backend..." -ForegroundColor Yellow
-$backendCommand = "Set-Location '$currentDir\backend'; pip install -r requirements.txt; python main.py"
+$backendCommand = "Set-Location '$currentDir\backend'; pip install -r requirements.txt; python -m uvicorn main:app --reload --port 8000"
 Start-Process powershell -ArgumentList "-NoExit", "-Command", $backendCommand
 
 # Wait a moment for backend to start
